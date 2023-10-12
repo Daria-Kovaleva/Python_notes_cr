@@ -1,7 +1,6 @@
 import json
 import datetime
 
-
 def read_notes_file():
     try:
         with open("notes.json", "r") as file:
@@ -9,14 +8,11 @@ def read_notes_file():
     except FileNotFoundError:
         return []
 
-
 notes = read_notes_file()
-
 
 def save_notes(notes): # функция для сохранения заметки
     with open("notes.json", "w") as file:
         json.dump(notes, file)
-
 
 def add_note(notes): # функция для создания заметки
     title = input("Введите заголовок заметки: ")
@@ -43,7 +39,6 @@ def print_notes(notes): # функция для вывода списка зам
     if not notes:
         print('Заметок не найдено')
 
-
 def filter_notes_by_date(notes): # функция для фильтрации заметок по дате
     date_str = input("Введите дату в формате ГГГГ-ММ-ДД: ")
     date = datetime.datetime.strptime(date_str, "%Y-%m-%d").date()
@@ -59,8 +54,7 @@ def filter_notes_by_date(notes): # функция для фильтрации з
             print(f"Дата/время добавления или последнего изменения зметки: {note['timestamp']}")
             print()
     else:
-        print("Заметки за указанну дату не найдены")
-
+        print("Заметки за указанную дату не найдены")
 
 def edit_note(notes): # функция для изменения заметки 
     note_id = int(input("Введите ID заметки для изменения: "))
@@ -76,7 +70,6 @@ def edit_note(notes): # функция для изменения заметки
             return notes
 
     print("Заметка с введённым ID не найдена")
-
 
 def delete_note(notes): # функция для удаления заметки
     note_id = int(input("Введите ID заметки для удаления: "))
